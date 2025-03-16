@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <h1>Task Tracker</h1>
-    <input v-model="newTask" @keyup.enter="addTask" placeholder="New Task" />
+    <input v-model="newTask" @keyup.enter="handleAddTask" placeholder="New Task" />
     <TaskList :tasks="tasks" @toggle="toggleTask" @delete="deleteTask" />
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import TaskList from './components/TaskList.vue';
 
 export default {
@@ -16,25 +17,19 @@ export default {
   },
   data() {
     return {
-      newTask: '',
-      tasks: []
+      newTask: ''
     };
   },
+  computed: {
+    ...mapState(['tasks'])
+  },
   methods: {
-    addTask() {
+    ...mapActions(['addTask', 'toggleTask', 'deleteTask']),
+    handleAddTask() {
       if (this.newTask.trim()) {
-        this.tasks.push({ id: Date.now(), text: this.newTask, completed: false });
+        this.addTask({ id: Date.now(), text: this.newTask, completed: false });
         this.newTask = '';
       }
-    },
-    toggleTask(id) {
-      const task = this.tasks.find((task) => task.id === id);
-      if (task) {
-        task.completed = !task.completed;
-      }
-    },
-    deleteTask(id) {
-      this.tasks = this.tasks.filter((task) => task.id !== id);
     }
   }
 };
