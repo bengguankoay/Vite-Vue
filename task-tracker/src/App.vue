@@ -1,44 +1,28 @@
 <template>
   <div id="app">
-    <h1>Task Tracker</h1>
-    <input v-model="newTask" @keyup.enter="handleAddTask" placeholder="New Task" />
-    <TaskList :tasks="tasks" @toggle="toggleTask" @delete="deleteTask" />
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/task-tracker">Task Tracker</router-link>
+      <router-link to="/task/1">Task 1</router-link>
+      <router-link to="/user/1/profile">User 1 Profile</router-link>
+      <router-link to="/user/1/posts">User 1 Posts</router-link>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
-import TaskList from './components/TaskList.vue';
-
 export default {
-  name: 'App',
-  components: {
-    TaskList
-  },
-  data() {
-    return {
-      newTask: ''
-    };
-  },
-  computed: {
-    ...mapState(['tasks'])
-  },
-  methods: {
-    ...mapActions(['addTask', 'toggleTask', 'deleteTask']),
-    handleAddTask() {
-      if (this.newTask.trim()) {
-        this.addTask({ id: Date.now(), text: this.newTask, completed: false });
-        this.newTask = '';
-      }
-    }
-  }
+  name: 'App'
 };
 </script>
 
 <style scoped>
-input {
-  padding: 8px;
-  margin: 10px 0;
-  font-size: 14px;
+nav {
+  margin-bottom: 20px;
+}
+router-link {
+  margin-right: 10px;
 }
 </style>
