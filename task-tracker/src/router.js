@@ -1,17 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './components/Home.vue';
 import About from './components/About.vue';
+import Product from './components/Product.vue';
 import TaskTracker from './components/TaskTracker.vue';
 import TaskDetail from './components/TaskDetail.vue';
 import User from './components/User.vue';
 import UserProfile from './components/UserProfile.vue';
 import UserPosts from './components/UserPosts.vue';
 import Login from './components/Login.vue';
+
 import store from './store';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
+  { path: '/product', component: Product },
   { path: '/task-tracker', component: TaskTracker, meta: { requiresAuth: true } },
   { path: '/task/:id', component: TaskDetail, props: true, meta: { requiresAuth: true } }, // Dynamic route
   {

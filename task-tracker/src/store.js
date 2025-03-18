@@ -5,10 +5,16 @@ import { login, logout, isAuthenticated, getToken } from './services/auth';
 export default createStore({
   state: {
     tasks: [],
+    products: [],
     user: null,
-    isAuthenticated: isAuthenticated()
+    isAuthenticated: isAuthenticated(),
+    totalProducts: 50,
+    productsPerPage: 5
   },
   mutations: {
+    setProducts(state, products) {
+      state.products = products;
+    },
     setTasks(state, tasks) {
       state.tasks = tasks;
     },
@@ -38,9 +44,24 @@ export default createStore({
     clearUser(state) {
       state.user = null;
       state.isAuthenticated = false;
+    },
+    setTotalProducts(state, total) {
+      state.totalProducts = total;
     }
   },
   actions: {
+    async fetchProducts({ commit }, { page, limit }) {
+      const response = await axios.get(
+        `https://api.escuelajs.co/api/v1/products?offset=${page}&limit=${limit}`
+      );
+      console.log('response', response);
+      commit('setProducts', response.data);
+      //   commit('setTotalProducts', parseInt(response.headers['x-total-count'], 10));
+    },
+    async fetchProduct({ commit }, id) {
+      const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`);
+      return response.data;
+    },
     // Add fetchTasks, addTask, updateTask, and deleteTask actions
     async fetchTasks({ commit }) {
       const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
@@ -81,7 +102,10 @@ export default createStore({
     }
   },
   getters: {
+    products: (state) => state.products,
     tasks: (state) => state.tasks,
-    isAuthenticated: (state) => state.isAuthenticated
+    isAuthenticated: (state) => state.isAuthenticated,
+    totalProducts: (state) => state.totalProducts,
+    productsPerPage: (state) => state.productsPerPage
   }
 });

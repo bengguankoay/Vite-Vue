@@ -3,6 +3,7 @@
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/product">Product</RouterLink>
       <RouterLink to="/task-tracker">Task Tracker</RouterLink>
       <RouterLink to="/task/1">Task 1</RouterLink>
       <RouterLink to="/user/1/profile">User 1 Profile</RouterLink>
