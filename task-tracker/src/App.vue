@@ -1,20 +1,30 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/task-tracker">Task Tracker</router-link>
-      <router-link to="/task/1">Task 1</router-link>
-      <router-link to="/user/1/profile">User 1 Profile</router-link>
-      <router-link to="/user/1/posts">User 1 Posts</router-link>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/task-tracker">Task Tracker</RouterLink>
+      <RouterLink to="/task/1">Task 1</RouterLink>
+      <RouterLink to="/user/1/profile">User 1 Profile</RouterLink>
+      <RouterLink to="/user/1/posts">User 1 Posts</RouterLink>
+      <RouterLink v-if="!isAuthenticated" to="/login">Login</RouterLink>
+      <button v-if="isAuthenticated" @click="logout">Logout</button>
     </nav>
-    <router-view></router-view>
+    <RouterView></RouterView>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
+  methods: {
+    ...mapActions(['logout'])
+  }
 };
 </script>
 
@@ -24,5 +34,8 @@ nav {
 }
 router-link {
   margin-right: 10px;
+}
+button {
+  margin-left: 10px;
 }
 </style>

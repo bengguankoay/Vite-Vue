@@ -1,9 +1,12 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
+import { login, logout, isAuthenticated, getToken } from './services/auth';
 
 export default createStore({
   state: {
-    tasks: []
+    tasks: [],
+    user: null,
+    isAuthenticated: isAuthenticated()
   },
   mutations: {
     setTasks(state, tasks) {
@@ -13,7 +16,6 @@ export default createStore({
       state.tasks.push(task);
     },
     toggleTask(state, id) {
-      console.log('toggleTask', id);
       const task = state.tasks.find((task) => task.id === id);
       if (task) {
         task.completed = !task.completed;
@@ -26,11 +28,20 @@ export default createStore({
       }
     },
     deleteTask(state, id) {
-      console.log('deleteTask', id);
       state.tasks = state.tasks.filter((task) => task.id !== id);
+    },
+    // Add setUser and clearUser mutations
+    setUser(state, user) {
+      state.user = user;
+      state.isAuthenticated = true;
+    },
+    clearUser(state) {
+      state.user = null;
+      state.isAuthenticated = false;
     }
   },
   actions: {
+    // Add fetchTasks, addTask, updateTask, and deleteTask actions
     async fetchTasks({ commit }) {
       const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
       commit('setTasks', response.data.slice(0, 10)); // Limit to 10 tasks for simplicity
@@ -58,9 +69,19 @@ export default createStore({
     },
     deleteTask({ commit }, id) {
       commit('deleteTask', id);
+    },
+    // Add login and logout actions
+    async login({ commit }, credentials) {
+      const user = await login(credentials);
+      commit('setUser', user);
+    },
+    logout({ commit }) {
+      logout();
+      commit('clearUser');
     }
   },
   getters: {
-    tasks: (state) => state.tasks
+    tasks: (state) => state.tasks,
+    isAuthenticated: (state) => state.isAuthenticated
   }
 });
