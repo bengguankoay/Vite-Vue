@@ -6,6 +6,7 @@
         :key="task.id"
         :task="task"
         @toggle="toggle"
+        @edit="edit"
         @delete="deleteTask"
       />
     </ul>
@@ -27,6 +28,9 @@ export default {
     toggle(id) {
       console.log('toggle', id);
       this.$emit('toggle', id);
+    },
+    edit(task) {
+      this.$emit('edit', task);
     },
     deleteTask(id) {
       console.log('delete', id);
