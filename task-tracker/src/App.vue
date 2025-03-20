@@ -48,8 +48,6 @@ body {
 }
 
 .landing-page {
-  height: 100%;
-  width: 100%;
   text-align: center;
   padding: 40px 20px;
 }
@@ -150,6 +148,36 @@ footer p {
 }
 
 /* Responsive Styles */
+@media only screen and (max-width: 499px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header .title {
+    font-size: 1.2rem;
+  }
+
+  header nav .nav-link {
+    font-size: 1rem;
+  }
+
+  .intro h2 {
+    font-size: 2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+  }
+
+  .cta .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
 @media (max-width: 768px) {
   header h1 {
     font-size: 2rem;
