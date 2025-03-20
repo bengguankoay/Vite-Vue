@@ -12,9 +12,9 @@ import Login from './components/Login.vue';
 import store from './store';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About },
-  { path: '/product', component: Product },
+  { path: '/showcase/', component: Home },
+  { path: '/showcase/about', component: About },
+  { path: '/showcase/product', component: Product },
   { path: '/task-tracker', component: TaskTracker, meta: { requiresAuth: true } },
   { path: '/task/:id', component: TaskDetail, props: true, meta: { requiresAuth: true } }, // Dynamic route
   {

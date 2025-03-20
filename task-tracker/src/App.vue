@@ -4,11 +4,10 @@
       <h1>Beng Guan Koay</h1>
       <p class="title">Software Engineer | Web Developer | Tech Enthusiast</p>
       <nav>
-        <RouterLink to="/" class="nav-link">Home</RouterLink>
-        <RouterLink to="/about" class="nav-link">About</RouterLink>
-        <RouterLink to="/product" class="nav-link">Portfolio</RouterLink>
+        <RouterLink to="/showcase/" class="nav-link">Home</RouterLink>
+        <RouterLink to="/showcase/about" class="nav-link">About</RouterLink>
+        <RouterLink to="/showcase/product" class="nav-link">Portfolio</RouterLink>
         <RouterLink to="/task-tracker" class="nav-link">Projects</RouterLink>
-        <RouterLink to="/contact" class="nav-link">Contact</RouterLink>
         <RouterLink to="/login" v-if="!isAuthenticated" class="nav-link">Login</RouterLink>
       </nav>
       <RouterView></RouterView>
@@ -16,7 +15,6 @@
     <main>
       <section class="cta">
         <RouterLink to="/about" class="btn primary-btn">Learn More About Me</RouterLink>
-        <RouterLink to="/contact" class="btn secondary-btn">Contact Me</RouterLink>
       </section>
     </main>
     <footer>

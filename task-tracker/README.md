@@ -1,41 +1,31 @@
-# Task Tracker
+# Personal Resume Landing Page
 
-This is a simple task tracker application built with Vite and Vue.
-
-## Project Structure
-
-- `src/App.vue`: The main application component that serves as the entry point of the application.
-- `src/components/TaskList.vue`: A reusable component that displays a list of tasks.
-- `src/components/TaskItem.vue`: A reusable component that represents an individual task item.
-
-## Getting Started
-
-1. Clone the repository.
-2. Install the dependencies: `npm install`.
-3. Start the development server: `npm run dev`.
-4. Open the application in your browser: `http://localhost:3000`.
-
-## Usage
-
-- Add tasks by entering a task name and pressing the "Add Task" button.
-- Mark tasks as completed by clicking the checkbox next to the task.
-- Delete tasks by clicking the "Delete" button next to the task.
+This project is a personal resume landing page built with Vue.js and Vue Router. It showcases a professional design with navigation links to different sections, including Home, About, Portfolio, Projects, and Login.
 
 ## Features
 
-With these changes, your project will have:
+- **Responsive Design**: The landing page is fully responsive and adapts to different screen sizes.
+- **Navigation**: Includes links to Home, About, Portfolio, Projects, and Login pages.
+- **Call-to-Action (CTA)**: Buttons to learn more about the user or contact them.
+- **Authentication**: Conditional rendering of the Login link based on the user's authentication status.
+- **Footer**: Displays a copyright notice.
 
-- Basic routes (Home, About, Task Tracker).
-- Dynamic routes (TaskDetail).
-- Nested routes (UserProfile, UserPosts).
-- Passing data through routes using props.
-- You can navigate to `/task/1` to see the task detail and to `/user/1/profile` or `/user/1/posts` to see the nested routes for the user.
-- Your project will have CRUD operations implemented using Vuex and API requests. You can add, update, and delete tasks, and the changes will be reflected in the state managed by Vuex.
+## Project Structure
 
-## Contributing
+- **Header**: Displays the user's name, title, and navigation links.
+- **Main Section**: Includes an introduction and call-to-action buttons.
+- **Footer**: Contains a copyright notice.
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+## Technologies Used
 
-## License
+- **Vue.js**: A progressive JavaScript framework for building user interfaces.
+- **Vue Router**: For navigation between different sections of the application.
+- **Vuex**: For state management (used for authentication in this project).
+- **CSS**: Scoped styles for a clean and modern design.
 
-This project is licensed under the [MIT License](LICENSE).
+## How to Run the Project
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
