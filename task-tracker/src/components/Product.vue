@@ -6,6 +6,7 @@
         <h2>Title: {{ product.title }}</h2>
         <p><strong>Description:</strong> {{ product.description }}</p>
         <p>Price: ${{ product.price }}</p>
+        <p>Image: <img :src="product.images" alt="Product Image" /></p>
       </li>
     </ul>
     <div class="pagination">
